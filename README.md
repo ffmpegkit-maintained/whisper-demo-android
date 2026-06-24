@@ -1,4 +1,4 @@
-# ffmpegkit-test-81 — WhisperKit integration test
+# ffmpegkit-test-81 — WhisperKit integration DEMO
 
 Test app for FFmpegKit 8.1 Full — validates the Whisper JNI bridge end-to-end.
 
