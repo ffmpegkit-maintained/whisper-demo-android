@@ -184,7 +184,7 @@ Key files to read if you want to learn from the sample:
 | Gradle: *"Could not find ffmpeg-kit…"* | The `.aar` is missing from `app/libs/`. Re-do **Step 1**. |
 | App says *"No model"* | Tap **Download tiny** or **Download base** first. |
 | App crashes on an old / 32-bit device | This demo targets **arm64-v8a**. Use a 64-bit device or emulator. |
-| Spanish subtitles say *"not available"* | The public LibreTranslate servers were unreachable. French and English still work fully offline. |
+| Spanish subtitles say *"not available"* | The public LibreTranslate servers were unreachable. The video's original language or English always works completely offline.. |
 
 ---
 
