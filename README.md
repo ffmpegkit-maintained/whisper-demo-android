@@ -8,6 +8,11 @@ A small, self-contained Android app that shows how to use **[FFmpegKit (Maintain
 
 It is meant as a **learning sample**: short, commented, and easy to read. If you are new to Android, just follow the steps below in order.
 
+> **The library powering this demo:** **FFmpegKit (Maintained)** — an actively maintained,
+> Android-only fork of FFmpegKit (FFmpeg + WhisperKit in one AAR).
+> 📦 Source & docs: **[github.com/ffmpegkit-maintained/ffmpeg-kit](https://github.com/ffmpegkit-maintained/ffmpeg-kit)** ·
+> 🛒 Get the AAR: **[Gumroad](https://ffmpegkit.gumroad.com/l/sogbka)**
+
 ---
 
 ## Screenshots
@@ -200,4 +205,6 @@ Key files to read if you want to learn from the sample:
 
 ---
 
-Built with **FFmpegKit (Maintained)** — https://ffmpegkit.gumroad.com/l/sogbka
+Built with **FFmpegKit (Maintained)** — library source & docs:
+[github.com/ffmpegkit-maintained/ffmpeg-kit](https://github.com/ffmpegkit-maintained/ffmpeg-kit) ·
+get the AAR on [Gumroad](https://ffmpegkit.gumroad.com/l/sogbka)
