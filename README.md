@@ -108,8 +108,11 @@ The APK lands in `app/build/outputs/apk/debug/app-debug.apk`.
 The whole demo happens inside the app — no command line required.
 
 1. **Download a Whisper model.** Tap **"Download tiny"** (fast, ~75 MB) or **"Download base"**
-   (slower, more accurate). The model is fetched from Hugging Face and stored privately inside
-   the app.
+   (slower, more accurate). The models come from the
+   [whisper.cpp model repository on Hugging Face](https://huggingface.co/ggerganov/whisper.cpp/tree/main)
+   ([ggml-tiny.bin](https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin) ·
+   [ggml-base.bin](https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin))
+   and are stored privately inside the app.
 2. **Pick a video.** Tap the **…** (browse) button and choose any video on your device.
 3. **Analyze.** Tap **Analyze**. The app will, in order:
    - extract audio with FFmpegKit,
@@ -121,8 +124,14 @@ The whole demo happens inside the app — no command line required.
 5. **Export.** Tap **Export** to burn the currently selected subtitles into a new MP4
    (saved in the app's external files folder; the on-screen message shows the exact path and an
    `adb pull` command to copy it to your computer).
+6. **Translation.** English translation is produced by **Whisper itself, on-device** — no network
+   needed. Translation to *other* languages (Spanish in this demo) is delegated to a
+   [LibreTranslate](https://libretranslate.com/) server (the demo uses free public instances), so
+   it is the only step that requires internet. You can point it at any LibreTranslate endpoint,
+   including a self-hosted one.
 
-Everything except the optional Spanish translation runs **fully offline**.
+Everything except the optional translation to languages other than English runs **fully offline**.
+The English translation is offline too — it is built into Whisper.
 
 ---
 
