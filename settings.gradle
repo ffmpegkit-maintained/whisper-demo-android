@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ffmpegkit-test-81"
+rootProject.name = "whisper-demo-android"
 include ':app'

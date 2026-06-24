@@ -12,7 +12,7 @@
         android:maxSdkVersion="29" />
 
     <application
-        android:label="WhisperKit Test"
+        android:label="Whisper Demo"
         android:theme="@android:style/Theme.Material.Light"
         android:usesCleartextTraffic="false">
 

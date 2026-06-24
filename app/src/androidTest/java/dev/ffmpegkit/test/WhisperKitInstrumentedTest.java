@@ -33,23 +33,23 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Instrumented test: generates FR/EN/ES subtitle files from Vol_election.mp4
+ * Instrumented test: generates FR/EN/ES subtitle files from a demo video
  * using FFmpegKit 8.1.7+ (all_channel_counts fix required).
  *
  * Prerequisites (handled by run_whisper_test.ps1):
- *   - Model at  getFilesDir()/ggml-tiny.bin       (pushed via adb + run-as)
- *   - Video at  /sdcard/Movies/Vol_election.mp4   (pushed via adb push)
+ *   - Model at  getFilesDir()/ggml-base.bin       (pushed via adb + run-as)
+ *   - Video at  /sdcard/Movies/demo_video.mp4     (pushed via adb push)
  *
  * Output SRT files:
- *   /sdcard/Android/data/dev.ffmpegkit.test/files/Vol_election_fr.srt
- *   /sdcard/Android/data/dev.ffmpegkit.test/files/Vol_election_en.srt
- *   /sdcard/Android/data/dev.ffmpegkit.test/files/Vol_election_es.srt
+ *   /sdcard/Android/data/dev.ffmpegkit.test/files/demo_fr.srt
+ *   /sdcard/Android/data/dev.ffmpegkit.test/files/demo_en.srt
+ *   /sdcard/Android/data/dev.ffmpegkit.test/files/demo_es.srt
  */
 @RunWith(AndroidJUnit4.class)
 public class WhisperKitInstrumentedTest {
 
     private static final String TAG = "WhisperTest";
-    private static final String VIDEO_PATH = "/sdcard/Movies/Vol_election.mp4";
+    private static final String VIDEO_PATH = "/sdcard/Movies/demo_video.mp4";
 
     private static final String[] LIBRE_TRANSLATE_INSTANCES = {
         "https://translate.cutie.dating",
@@ -135,8 +135,8 @@ public class WhisperKitInstrumentedTest {
                 + srt.substring(0, Math.min(300, srt.length())));
         assertNotNull("transcribeToSrt() returned null", srt);
         assertFalse("transcribeToSrt() returned empty", srt.trim().isEmpty());
-        writeSrt("Vol_election_fr.srt", srt);
-        Log.i(TAG, "Vol_election_fr.srt saved (" + srt.length() + " chars)");
+        writeSrt("demo_fr.srt", srt);
+        Log.i(TAG, "demo_fr.srt saved (" + srt.length() + " chars)");
     }
 
     @Test(timeout = 600_000)
@@ -148,8 +148,8 @@ public class WhisperKitInstrumentedTest {
                 + srt.substring(0, Math.min(300, srt.length())));
         assertNotNull("translateToSrt() returned null", srt);
         assertFalse("translateToSrt() returned empty", srt.trim().isEmpty());
-        writeSrt("Vol_election_en.srt", srt);
-        Log.i(TAG, "Vol_election_en.srt saved (" + srt.length() + " chars)");
+        writeSrt("demo_en.srt", srt);
+        Log.i(TAG, "demo_en.srt saved (" + srt.length() + " chars)");
     }
 
     @Test(timeout = 600_000)
@@ -171,11 +171,11 @@ public class WhisperKitInstrumentedTest {
             }
         }
         if (esSrt != null && !esSrt.trim().isEmpty()) {
-            writeSrt("Vol_election_es.srt", esSrt);
-            Log.i(TAG, "Vol_election_es.srt saved via " + usedInstance);
+            writeSrt("demo_es.srt", esSrt);
+            Log.i(TAG, "demo_es.srt saved via " + usedInstance);
         } else {
             Log.w(TAG, "Spanish subtitles NOT generated — all LibreTranslate instances failed.");
-            writeSrt("Vol_election_es.srt",
+            writeSrt("demo_es.srt",
                     "1\n00:00:00,000 --> 00:00:03,000\n"
                     + "[Subtítulos en español no disponibles — se requiere conexión de red (LibreTranslate)]\n");
         }

@@ -59,18 +59,21 @@ public class MainActivity extends Activity {
     private static final String TAG          = "WhisperDemo";
     private static final String TINY_URL     = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin";
     private static final String BASE_URL     = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin";
+    /** Buy / download the FFmpegKit (Maintained) library that powers this demo. */
+    private static final String GUMROAD_URL  = "https://ffmpegkit.gumroad.com/l/sogbka";
     private static final int    REQ_PERM     = 1;
     private static final int    REQ_PICK     = 2;
 
     // ── views ──────────────────────────────────────────────────────────────────
-    private TextView     tvModelStatus, tvProgress;
+    private TextView     tvModelStatus, tvProgress, tvSelectedFile, tvLangHint;
     private Button       btnDownloadTiny, btnDownloadBase;
-    private Button       btnBrowse, btnAnalyze, btnExport;
+    private Button       btnBrowse, btnAnalyze, btnExport, btnBuy;
     private Button       btnFr, btnEn, btnEs;
     private EditText     etVideoPath;
     private VideoView    videoView;
     private TextView     tvSubtitle;
-    private LinearLayout playerCard, langCard, statsCard;
+    private View         playerCard;             // FrameLayout in XML — keep as View
+    private LinearLayout langCard, statsCard;
     private TextView     tvStatTime, tvStatModel, tvStatFfmpeg, tvStatInfo;
 
     // ── state ──────────────────────────────────────────────────────────────────
@@ -96,11 +99,14 @@ public class MainActivity extends Activity {
 
         tvModelStatus   = findViewById(R.id.tvModelStatus);
         tvProgress      = findViewById(R.id.tvProgress);
+        tvSelectedFile  = findViewById(R.id.tvSelectedFile);
+        tvLangHint      = findViewById(R.id.tvLangHint);
         btnDownloadTiny = findViewById(R.id.btnDownloadTiny);
         btnDownloadBase = findViewById(R.id.btnDownloadBase);
         btnBrowse       = findViewById(R.id.btnBrowse);
         btnAnalyze      = findViewById(R.id.btnAnalyze);
         btnExport       = findViewById(R.id.btnExport);
+        btnBuy          = findViewById(R.id.btnBuy);
         btnFr           = findViewById(R.id.btnFr);
         btnEn           = findViewById(R.id.btnEn);
         btnEs           = findViewById(R.id.btnEs);
@@ -126,9 +132,19 @@ public class MainActivity extends Activity {
         btnBrowse.setOnClickListener(v -> openFilePicker());
         btnAnalyze.setOnClickListener(v -> requestPermissionAndAnalyze());
         btnExport.setOnClickListener(v -> exportWithSubtitles());
+        btnBuy.setOnClickListener(v -> openGumroad());
         btnFr.setOnClickListener(v -> selectLanguage(0));
         btnEn.setOnClickListener(v -> selectLanguage(1));
         btnEs.setOnClickListener(v -> selectLanguage(2));
+    }
+
+    /** Open the Gumroad page where the FFmpegKit library can be purchased / downloaded. */
+    private void openGumroad() {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(GUMROAD_URL)));
+        } catch (Exception e) {
+            setProgress("Could not open browser: " + GUMROAD_URL);
+        }
     }
 
     @Override
@@ -220,10 +236,27 @@ public class MainActivity extends Activity {
                     getContentResolver().takePersistableUriPermission(uri, flags);
                 }
                 pickedUri = uri;
-                etVideoPath.setText(uri.toString());
-                setProgress("Video selected via file picker.");
+                etVideoPath.setText("");            // a picked URI takes priority over the manual path
+                String name = displayName(uri);
+                tvSelectedFile.setText("Selected: " + name);
+                setProgress("Video selected. Tap Analyze to generate subtitles.");
             }
         }
+    }
+
+    /** Best-effort human-readable name for a content URI (falls back to the last path segment). */
+    private String displayName(Uri uri) {
+        try (android.database.Cursor c = getContentResolver().query(uri, null, null, null, null)) {
+            if (c != null && c.moveToFirst()) {
+                int idx = c.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME);
+                if (idx >= 0) {
+                    String n = c.getString(idx);
+                    if (n != null && !n.isEmpty()) return n;
+                }
+            }
+        } catch (Exception ignored) { }
+        String seg = uri.getLastPathSegment();
+        return seg != null ? seg : uri.toString();
     }
 
     // ═══════════════════════════════════════════════════════════ permissions ══
@@ -269,12 +302,17 @@ public class MainActivity extends Activity {
         } else {
             videoUri     = null;
             videoPathStr = etVideoPath.getText().toString().trim();
+            if (videoPathStr.isEmpty()) {
+                setProgress("Pick a video first — tap \"📁 Pick a video from your phone\".");
+                return;
+            }
             if (!new File(videoPathStr).exists()) {
                 setProgress("Video not found: " + videoPathStr
-                        + "\nUse the … button to pick a file, or push via:\n"
+                        + "\nUse the pick button to choose a file, or push via:\n"
                         + "  adb push <video> /sdcard/Movies/");
                 return;
             }
+            tvSelectedFile.setText("Selected: " + videoPathStr);
         }
 
         btnAnalyze.setEnabled(false);
@@ -368,6 +406,7 @@ public class MainActivity extends Activity {
                     tvStatInfo.setText(statInfo);
                     statsCard.setVisibility(View.VISIBLE);
                     playerCard.setVisibility(View.VISIBLE);
+                    tvLangHint.setVisibility(View.VISIBLE);
                     langCard.setVisibility(View.VISIBLE);
                     selectLanguage(0);
                     if (playUri != null) {

@@ -13,5 +13,13 @@ local.properties
 # Model file (too large, downloaded at runtime)
 *.bin
 
+# Built APK — bundles the licensed FFmpegKit native libraries, never commit it
+# to this public repo (distribute it via Gumroad / a private channel instead).
+*.apk
+
+# Sample videos a developer drops in to test
+samples/
+
 # Test results / generated SRT files
 whisper_test_results.txt
+*.srt

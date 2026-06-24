@@ -10,22 +10,96 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- ══ HERO — Whisper is the star ══════════════════════════ -->
+
         <TextView
-            android:text="FFmpegKit 8.1 — Whisper Demo"
-            android:textSize="22sp"
+            android:text="Whisper Demo"
+            android:textSize="26sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
+            android:textColor="#1A1A1A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <!-- ══ MODEL ═══════════════════════════════════════════════ -->
+        <TextView
+            android:text="On-device speech-to-text &amp; translation"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Two flagship features, side by side -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_weight="1"
+                android:background="#E8F0FE"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="🕑  Real-time subtitles"
+                    android:textStyle="bold"
+                    android:textColor="#1A73E8"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="Subtitles generated live from the audio while the video plays."
+                    android:textSize="12sp"
+                    android:textColor="#3C4043"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="#E6F4EA"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="🌐  FR · EN · ES"
+                    android:textStyle="bold"
+                    android:textColor="#188038"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="Transcribe in French, translate to English &amp; Spanish."
+                    android:textSize="12sp"
+                    android:textColor="#3C4043"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- ══ STEP 1 — MODEL ══════════════════════════════════════ -->
 
         <TextView
-            android:text="WHISPER MODEL"
+            android:text="STEP 1 · WHISPER MODEL"
             android:textSize="11sp"
             android:textStyle="bold"
+            android:textColor="#5F6368"
             android:textAllCaps="true"
-            android:letterSpacing="0.1"
+            android:letterSpacing="0.08"
+            android:layout_marginTop="22dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -59,60 +133,78 @@
 
         </LinearLayout>
 
-        <!-- ══ VIDEO PATH ════════════════════════════════════════════ -->
+        <!-- ══ STEP 2 — PICK A VIDEO FROM THE PHONE ════════════════ -->
 
         <TextView
-            android:text="VIDEO"
+            android:text="STEP 2 · CHOOSE A VIDEO"
             android:textSize="11sp"
             android:textStyle="bold"
+            android:textColor="#5F6368"
             android:textAllCaps="true"
-            android:letterSpacing="0.1"
-            android:layout_marginTop="20dp"
+            android:letterSpacing="0.08"
+            android:layout_marginTop="22dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Primary action: pick any video on the device -->
+        <Button
+            android:id="@+id/btnBrowse"
+            android:text="📁  Pick a video from your phone"
+            android:textStyle="bold"
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvSelectedFile"
+            android:text="No video selected yet"
+            android:textSize="12sp"
+            android:textColor="#5F6368"
+            android:textStyle="italic"
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Advanced: type a direct path instead (optional) -->
+        <EditText
+            android:id="@+id/etVideoPath"
+            android:hint="…or type a path, e.g. /sdcard/Movies/your_video.mp4"
+            android:inputType="textUri"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- ══ STEP 3 — ACTIONS ════════════════════════════════════ -->
+
+        <TextView
+            android:text="STEP 3 · GENERATE SUBTITLES"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#5F6368"
+            android:textAllCaps="true"
+            android:letterSpacing="0.08"
+            android:layout_marginTop="22dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/etVideoPath"
-                android:text="/sdcard/Movies/Vol_election.mp4"
-                android:inputType="textUri"
-                android:singleLine="true"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btnBrowse"
-                android:text="..."
-                android:layout_marginStart="4dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <!-- ══ ACTIONS ════════════════════════════════════════════════ -->
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/btnAnalyze"
-                android:text="Analyser"
+                android:text="Analyze"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btnExport"
-                android:text="Exporter"
+                android:text="Export MP4"
                 android:enabled="false"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
@@ -145,7 +237,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <!-- Subtitle overlay at bottom of video -->
+            <!-- Real-time subtitle overlay at bottom of video -->
             <TextView
                 android:id="@+id/tvSubtitle"
                 android:layout_gravity="bottom|center_horizontal"
@@ -167,6 +259,16 @@
         </FrameLayout>
 
         <!-- ══ LANGUAGE SELECTOR (hidden until analysis completes) ═══ -->
+
+        <TextView
+            android:id="@+id/tvLangHint"
+            android:text="Tap a language — subtitles switch live:"
+            android:textSize="12sp"
+            android:textColor="#5F6368"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/langCard"
@@ -253,6 +355,41 @@
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
+
+        <!-- ══ GUMROAD — buy the library ═════════════════════════════ -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="22dp"
+            android:background="#22000000" />
+
+        <TextView
+            android:text="Powered by FFmpegKit (Maintained)"
+            android:textStyle="bold"
+            android:textColor="#1A1A1A"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="WhisperKit + FFmpeg in a single Android AAR. Get the library to build your own app:"
+            android:textSize="13sp"
+            android:textColor="#3C4043"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnBuy"
+            android:text="🛒  Get FFmpegKit on Gumroad"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#FF90E1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </ScrollView>
