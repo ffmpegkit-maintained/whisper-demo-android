@@ -1,0 +1,17 @@
+# Android / Gradle build outputs
+.gradle/
+build/
+app/build/
+app/libs/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Model file (too large, downloaded at runtime)
+*.bin
+
+# Test results / generated SRT files
+whisper_test_results.txt
