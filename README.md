@@ -4,7 +4,7 @@ A small, self-contained Android app that shows how to use **[FFmpegKit (Maintain
 
 1. **FFmpegKit** extracts the audio track from a video (16 kHz mono PCM).
 2. **WhisperKit** (bundled in the same AAR) transcribes and translates that audio **100 % on-device** — no cloud, no API key.
-3. The app shows the video with **live subtitles** in **French / English / Spanish**, and can **burn the subtitles back into an MP4** with FFmpegKit.
+3. The app shows the video with **live subtitles** in **French / English / Spanish** (99 languages ​​are theoretically possible), and can **burn the subtitles back into an MP4** with FFmpegKit.
 
 It is meant as a **learning sample**: short, commented, and easy to read. If you are new to Android, just follow the steps below in order.
 
