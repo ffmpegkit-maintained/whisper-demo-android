@@ -10,6 +10,18 @@ It is meant as a **learning sample**: short, commented, and easy to read. If you
 
 ---
 
+## Screenshots
+
+| Home — the two flagship features | Real-time subtitles (FR) | Live translation (EN) |
+|:---:|:---:|:---:|
+| ![Home screen](docs/screenshots/01-home.png) | ![French subtitles](docs/screenshots/02-subtitles-fr.png) | ![English translation](docs/screenshots/03-translation-en.png) |
+
+*Pick any video on your phone → Whisper generates subtitles **on-device**, then you switch
+**FR / EN / ES** live. English translation is built into Whisper (offline); other languages use
+LibreTranslate.*
+
+---
+
 ## What you need
 
 | Tool | Version | Notes |
