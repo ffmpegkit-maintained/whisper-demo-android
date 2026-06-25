@@ -202,6 +202,14 @@ Key files to read if you want to learn from the sample:
 | App says *"No model"* | Tap **Download tiny** or **Download base** first. |
 | App crashes on an old / 32-bit device | This demo targets **arm64-v8a**. Use a 64-bit device or emulator. |
 | Spanish subtitles say *"not available"* | The public LibreTranslate servers were unreachable. The video's original language or English always works completely offline.. |
+| You see **two sets of subtitles**, or captions appear before you tap **Analyze** | Your device has **Live Caption** (a built-in Android/Pixel accessibility feature) turned on — it captions *any* audio system-wide and is unrelated to this app. The app cannot enable, disable, or control it. Turn it off via the **volume button → captions icon**, or **Settings → Accessibility → Live Caption**. |
+
+> **Note on Live Caption.** "Live Caption" is a system feature of Android (notably on Pixel) that
+> automatically captions any audio playing on the device — videos, podcasts, voice messages — across
+> all apps. It is **completely separate** from this demo: the app has no microphone permission and no
+> background service, so it cannot listen to other apps or enable Live Caption (that requires a
+> system-level permission no normal app can hold). If Live Caption is on, you may see its captions
+> *in addition to* the subtitles this app generates — that is the system, not the app.
 
 ---
 
