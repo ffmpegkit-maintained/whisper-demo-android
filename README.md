@@ -13,7 +13,7 @@ It is meant as a **learning sample**: short, commented, and easy to read. If you
 > 📦 Source & docs: **[github.com/ffmpegkit-maintained/ffmpeg-kit](https://github.com/ffmpegkit-maintained/ffmpeg-kit)** ·
 > 
 > 🛒 **🔥 Get Whisper + FFmpegKit ?**  
-→ [Download Full GPL 8.1 with Whisper here](https://ffmpegkit.gumroad.com/l/sogbka)
+→ [Download Full GPL 8.1 with Whisper prebuilt AAR here](https://ffmpegkit.gumroad.com/l/sogbka)
 
 ---
 
