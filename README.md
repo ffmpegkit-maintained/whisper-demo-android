@@ -1,8 +1,5 @@
 # WhisperKit Demo for Android — FFmpegKit (Maintained)
 
-**🔥 Besoin de Whisper + FFmpegKit ?**  
-→ [Télécharge le Full GPL 8.1 avec Whisper ici](https://ffmpegkit.gumroad.com/l/sogbka) ($44)
-
 A small, self-contained Android app that shows how to use **[FFmpegKit (Maintained)](https://ffmpegkit.gumroad.com/l/sogbka)** end-to-end:
 
 1. **FFmpegKit** extracts the audio track from a video (16 kHz mono PCM).
@@ -14,7 +11,8 @@ It is meant as a **learning sample**: short, commented, and easy to read. If you
 > **The library powering this demo:** **FFmpegKit (Maintained)** — an actively maintained,
 > Android-only fork of FFmpegKit (FFmpeg + WhisperKit in one AAR).
 > 📦 Source & docs: **[github.com/ffmpegkit-maintained/ffmpeg-kit](https://github.com/ffmpegkit-maintained/ffmpeg-kit)** ·
-> 🛒 Get the AAR: **[Gumroad](https://ffmpegkit.gumroad.com/l/sogbka)**
+> 🛒 **🔥 Get Whisper + FFmpegKit ?**  
+→ [Download Full GPL 8.1 with Whisper here](https://ffmpegkit.gumroad.com/l/sogbka)
 
 ---
 
