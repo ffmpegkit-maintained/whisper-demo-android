@@ -11,6 +11,7 @@ It is meant as a **learning sample**: short, commented, and easy to read. If you
 > **The library powering this demo:** **FFmpegKit (Maintained)** — an actively maintained,
 > Android-only fork of FFmpegKit (FFmpeg + WhisperKit in one AAR).
 > 📦 Source & docs: **[github.com/ffmpegkit-maintained/ffmpeg-kit](https://github.com/ffmpegkit-maintained/ffmpeg-kit)** ·
+> 
 > 🛒 **🔥 Get Whisper + FFmpegKit ?**  
 → [Download Full GPL 8.1 with Whisper here](https://ffmpegkit.gumroad.com/l/sogbka)
 
